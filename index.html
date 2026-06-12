@@ -37,7 +37,7 @@
     }
 
     .font-display {
-      font-family: 'Fraunces', serif;
+      font-family: 'Poppins', serif;
       letter-spacing: -.01em;
     }
 
@@ -1439,8 +1439,8 @@
                 <select id="filter-status" onchange="applyFilters()"
                   class="w-full bg-slate-50 rounded-xl border border-slate-200/60 p-2.5 text-xs text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium">
                   <option value="">Semua Status</option>
-                  <option value="Aktif">Aktif Pemancar</option>
-                  <option value="Tidak Aktif">Tidak Aktif Offline</option>
+                  <option value="Aktif">Aktif</option>
+                  <option value="Tidak Aktif">Tidak Aktif</option>
                 </select>
               </div>
               <div>
@@ -1475,7 +1475,7 @@
         <div
           class="lg:col-span-8 relative rounded-3xl overflow-hidden border border-slate-100 shadow-md bg-white h-[450px] lg:h-[700px]">
 
-          <div id="bali-map" class="w-full h-full z-10"></div>
+          <div id="bali-map" class="w-full z-10"></div>
 
           <div
             class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md p-3 rounded-xl border border-slate-200/60 shadow-lg z-20 text-[11px] font-medium text-slate-600 space-y-1.5 pointer-events-auto">
@@ -1556,19 +1556,19 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-        <div class="bg-gradient-to-br from-white to-blue-50/20 p-4 rounded-2xl border border-slate-100 shadow-sm">
+        <div class="bg-gradient-to-br from-white to-blue-50/20 p-4 rounded-2xl border border-slate-100 shadow-md">
           <div class="text-xs font-bold text-blue-500 uppercase tracking-wider mb-1">Curah Hujan</div>
           <p class="text-xs text-slate-500 leading-relaxed">Pengukuran intensitas curah hujan harian dari stasiun
             otomatis (ARR).</p>
           <div id="card-arr" class="text-base font-bold text-blue-600 mt-2">—</div>
         </div>
-        <div class="bg-gradient-to-br from-white to-sky-50/20 p-4 rounded-2xl border border-slate-100 shadow-sm">
+        <div class="bg-gradient-to-br from-white to-sky-50/20 p-4 rounded-2xl border border-slate-100 shadow-md">
           <div class="text-xs font-bold text-sky-500 uppercase tracking-wider mb-1">Tinggi Muka Air</div>
           <p class="text-xs text-slate-500 leading-relaxed">Monitoring fluktuasi ketinggian air di permukaan daerah
             aliran sungai (TMA).</p>
           <div id="card-tma" class="text-base font-bold text-sky-600 mt-2">—</div>
         </div>
-        <div class="bg-gradient-to-br from-white to-purple-50/20 p-4 rounded-2xl border border-slate-100 shadow-sm">
+        <div class="bg-gradient-to-br from-white to-purple-50/20 p-4 rounded-2xl border border-slate-100 shadow-md">
           <div class="text-xs font-bold text-purple-500 uppercase tracking-wider mb-1">Kualitas Air</div>
           <p class="text-xs text-slate-500 leading-relaxed">Analisis parameter kimiawi & kondisi baku mutu air secara
             otomatis terintegrasi.</p>
@@ -1590,6 +1590,7 @@
       function isActive(h) {
         return (new Date() - new Date(h.last_sending)) / 86400000 <= 30;
       }
+
       function cat(h) {
         const k = Object.keys(h.sensor).join(',').toLowerCase();
         if (k.includes('curah hujan')) return 'Curah Hujan';
@@ -1597,6 +1598,7 @@
         if (k.includes('water level')) return 'Water Level';
         return 'Kualitas Air';
       }
+
       function fmtDate(s) {
         if (!s) return '—';
         const d = new Date(s);
@@ -1697,7 +1699,6 @@
         document.getElementById('panel-empty').style.display = 'none';
         document.getElementById('panel-detail').style.style.display = 'flex';
 
-        // EFEK ANIMASI MEMBUKA PANEL FLOATING DARI KANAN PETA
         document.getElementById('station-panel').classList.add('open-panel');
 
         document.getElementById('detail-name').textContent = h.location;
