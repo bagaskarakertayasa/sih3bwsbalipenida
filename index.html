@@ -1572,40 +1572,36 @@
             </button>
           </div>
 
-          <form action="#" method="POST" class="p-6 space-y-4">
+          <form id="downloadForm" enctype="multipart/form-data" class="p-6 space-y-4">
 
             <div>
               <label for="nama" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-              <input type="text" id="nama" name="nama" required placeholder="Masukkan nama lengkap Anda"
+              <input type="text" id="nama" name="fi-sender-fullName" required placeholder="Masukan nama lengkap Anda"
                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
             </div>
 
             <div>
-              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-              <input type="email" id="email" name="email" required placeholder="Masukkan email Anda"
+              <label for="email_user" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <input type="email" id="email_user" name="fi-sender-email" required placeholder="Masukan email Anda"
                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
             </div>
 
             <div>
               <label for="instansi" class="block text-sm font-medium text-gray-700 mb-1">Instansi</label>
-              <input type="text" id="instansi" name="instansi" required placeholder="Masukan Instansi Anda"
+              <input type="text" id="instansi" name="fi-sender-company" required placeholder="Masukan Instansi Anda"
                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
             </div>
 
             <div>
               <label for="jenis_data" class="block text-sm font-medium text-gray-700 mb-1">Jenis Data</label>
-              <select id="" required name="jenis_data"
+              <input type="text" id="jenis_data" name="fi-sender-jenisData" required
+                placeholder="Masukan Jenis Data yang ingin diajukan"
                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
-                <option value="" disabled selected>Pilih salah satu</option>
-                <option value="klimatologi">Data Klimatologi</option>
-                <option value="hidrometri">Data Fisik DAS (Daerah Aliran Sungai) & Morfologi</option>
-                <option value="geohidrologi">Data Air Tanah</option>
-              </select>
             </div>
 
             <div>
               <label for="tujuan" class="block text-sm font-medium text-gray-700 mb-1">Tujuan</label>
-              <textarea id="tujuan" name="tujuan" rows="3" required
+              <textarea id="tujuan" name="fi-text-tujuan" rows="3" required
                 placeholder="Tuliskan tujuan Anda mengunduh data ini"
                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm resize-none"></textarea>
             </div>
@@ -1613,9 +1609,9 @@
             <div>
               <label for="surat_permohonan" class="block text-sm font-medium text-gray-700 mb-1">Surat
                 Permohonan</label>
-              <input type="file" id="surat_permohonan" name="surat_permohonan" required accept=".pdf,.doc,.docx"
+              <input type="file" id="surat_permohonan" name="fi-file-suratPermohonan" required accept=".pdf"
                 class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 border border-gray-300 rounded-lg cursor-pointer focus:outline-none">
-                <p class="mt-1 text-xs text-gray-500">Format yang diterima: PDF, DOC, atau DOCX.</p>
+              <p class="mt-1 text-xs text-gray-500">Format yang diterima hanya PDF dan ukuran file maksimal 500 KB.</p>
             </div>
 
             <div class="flex justify-end space-x-3 pt-4 border-t border-gray-100">
@@ -1624,7 +1620,7 @@
                 class="px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 focus:outline-none">
                 Batal
               </button>
-              <button type="submit"
+              <button type="submit" id="btnSubmit"
                 class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none shadow-md">
                 Kirim Ajuan
               </button>
@@ -1634,7 +1630,150 @@
         </div>
       </div>
 
+      <!-- pop up alert -->
+      <div id="alert-banner"
+        class="fixed top-5 right-5 z-50 transform translate-y-[-20px] opacity-0 transition-all duration-500 ease-out pointer-events-none">
+        <div id="alert-box" class="flex items-center p-4 mb-4 text-sm rounded-lg shadow-lg border" role="alert">
+
+          <div id="alert-icon" class="flex-shrink-0 inline me-3"></div>
+
+          <span class="sr-only">Status info</span>
+          <div>
+            <span id="alert-title" class="font-medium mr-1">Perhatian!</span>
+            <span id="alert-message">Ukuran Surat Permohonan maksimal 500 KB.</span>
+          </div>
+        </div>
+      </div>
+
     </main>
+
+    <script>
+      const API_CONFIG = {
+        URL: 'https://script.google.com/macros/s/AKfycbzE1S8Nk0cMOfisY-eQNSiqEJeGW34Xeh0u3F0J19eYFKRQqJFCyIzBwxhj_s50QLjvpQ/exec',
+        TOKEN: 'vWlBmC9mBPieNpLfPeWz9b2DGFlNSlfI'
+      };
+
+      const FILE_LIMIT_KB = 500;
+
+      function showAlert(message, type = 'warning') {
+        const banner = document.getElementById('alert-banner');
+        const alertBox = document.getElementById('alert-box');
+        const alertIcon = document.getElementById('alert-icon');
+        const alertTitle = document.getElementById('alert-title');
+        const alertMessage = document.getElementById('alert-message');
+
+        const icons = {
+          warning: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>`,
+          success: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>`
+        };
+
+        // Reset layout dasar box
+        alertBox.className = "flex items-center p-4 mb-4 text-sm rounded-lg shadow-lg border";
+
+        if (type === 'success') {
+          alertBox.classList.add('text-green-800', 'bg-green-50', 'border-green-200');
+          alertTitle.innerText = "Sukses!";
+        } else {
+          alertBox.classList.add('text-yellow-800', 'bg-yellow-50', 'border-yellow-200');
+          alertTitle.innerText = "Perhatian!";
+        }
+
+        alertIcon.innerHTML = icons[type] || icons.warning;
+        alertMessage.innerText = message;
+
+        banner.classList.remove('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
+        banner.classList.add('opacity-100', 'translate-y-0');
+
+        setTimeout(() => {
+          banner.classList.remove('opacity-100', 'translate-y-0');
+          banner.classList.add('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
+        }, 4000);
+      }
+
+      function readFileAsBase64(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = (event) => resolve(event.target.result.split(',')[1]);
+          reader.onerror = (error) => reject(error);
+          reader.readAsDataURL(file);
+        });
+      }
+
+      function closeModal() {
+        const modal = document.getElementById('myModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+
+      document.getElementById('downloadForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const btnSubmit = document.getElementById('btnSubmit');
+        const fileInput = document.getElementById('surat_permohonan');
+        const file = fileInput.files[0];
+
+        if (!file) {
+          showAlert('Silakan pilih file Surat Permohonan terlebih dahulu.', 'warning');
+          return;
+        }
+
+        if (file.size > FILE_LIMIT_KB * 1024) {
+          showAlert(`Ukuran Surat Permohonan melebihi limit maksimal ${FILE_LIMIT_KB} KB.`, 'warning');
+          fileInput.value = "";
+          return;
+        }
+
+        if (file.type !== "application/pdf") {
+          showAlert('Format file tidak didukung. Hanya menerima file pdf', 'warning');
+          fileInput.value = "";
+          return;
+        }
+
+        btnSubmit.disabled = true;
+        btnSubmit.innerText = 'Sedang Mengirim...';
+
+        try {
+          const base64String = await readFileAsBase64(file);
+
+          const payload = {
+            secretToken: API_CONFIG.TOKEN,
+            fullName: document.getElementById('nama').value,
+            email: document.getElementById('email_user').value,
+            company: document.getElementById('instansi').value,
+            jenisData: document.getElementById('jenis_data').value,
+            tujuan: document.getElementById('tujuan').value,
+            file: {
+              base64: base64String,
+              name: file.name,
+              type: file.type
+            }
+          };
+
+          const response = await fetch(API_CONFIG.URL, {
+            method: 'POST',
+            mode: 'cors',
+            body: JSON.stringify(payload)
+          });
+
+          const result = await response.json();
+
+          if (result.status === 'success') {
+            showAlert('Formulir Pengajuan Unduh Data Berhasil Dikirim!', 'success');
+            this.reset();
+            closeModal();
+          } else {
+            showAlert('Gagal menyimpan: ' + result.message, 'warning');
+          }
+
+        } catch (error) {
+          console.error('Submission Error:', error);
+          showAlert('Terjadi kesalahan jaringan saat mengirim data.', 'warning');
+        } finally {
+          btnSubmit.disabled = false;
+          btnSubmit.innerText = 'Kirim Ajuan';
+        }
+      });
+    </script>
 
     <script>
       /* ── DATA ── */
@@ -1676,9 +1815,9 @@
         const arrN = stations.filter(h => cat(h) === 'Curah Hujan').length;
         const tmaN = stations.filter(h => ['Tinggi Muka Air', 'Water Level'].includes(cat(h))).length;
         const qualN = stations.filter(h => cat(h) === 'Kualitas Air').length;
-        document.getElementById('card-arr').textContent = arrN + ' stasiun';
-        document.getElementById('card-tma').textContent = tmaN + ' stasiun';
-        document.getElementById('card-qual').textContent = qualN + ' stasiun';
+        //document.getElementById('card-arr').textContent = arrN + ' stasiun';
+        //document.getElementById('card-tma').textContent = tmaN + ' stasiun';
+        //document.getElementById('card-qual').textContent = qualN + ' stasiun';
 
         document.getElementById('empty-stats').innerHTML = `
     <div class="empty-stat-item"><span style="width:9px;height:9px;border-radius:50%;background:#22c55e;flex-shrink:0;"></span><strong>${aktif.length}</strong> stasiun aktif</div>
