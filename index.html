@@ -1148,89 +1148,211 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="relative w-full group py-4">
 
-        <a href="preview-kegiatan4.html"
-          class="flex flex-col justify-between bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5">
-          <div class="flex flex-col items-center text-center gap-4">
-            <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
-              <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 3" class="w-full h-full object-cover">
-            </div>
+        <button id="prev-btn"
+          class="absolute left-2 top-1/2 -translate-y-1/2 z-20 h-12 w-12 inline-flex items-center justify-center rounded-full border border-slate-200 bg-white/90 backdrop-blur-sm shadow-md text-slate-600 hover:bg-white hover:scale-105 transition-all duration-300 opacity-0 group-hover:opacity-100 pointer-events-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+            stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
 
-            <div class="flex-grow min-w-0">
-              <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">
-                15 Agustus 2024
-              </span>
-              <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">
-                Revisi Draft Tabel 1 dan Tabel 2
-              </h3>
-            </div>
+        <button id="next-btn"
+          class="absolute right-2 top-1/2 -translate-y-1/2 z-20 h-12 w-12 inline-flex items-center justify-center rounded-full border border-slate-200 bg-white/90 backdrop-blur-sm shadow-md text-slate-600 hover:bg-white hover:scale-105 transition-all duration-300 opacity-0 group-hover:opacity-100 pointer-events-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+            stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+
+        <div class="w-full overflow-hidden">
+          <div id="slider-track"
+            class="flex gap-6 transition-transform duration-500 ease-out committee-track will-change-transform">
+
+            <a href="preview-kegiatan7.html"
+              class="w-[calc(100%-0px)] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] flex flex-col justify-between bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5 flex-shrink-0">
+              <div class="flex flex-col items-center text-center gap-4">
+                <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
+                  <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 4" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-grow min-w-0">
+                  <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">08 Juli
+                    2026</span>
+                  <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">Sidang Pleno Pembahasan PSIH3</h3>
+                </div>
+              </div>
+            </a>
+
+            <a href="preview-kegiatan6.html"
+              class="w-[calc(100%-0px)] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] flex flex-col justify-between bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5 flex-shrink-0">
+              <div class="flex flex-col items-center text-center gap-4">
+                <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
+                  <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 4" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-grow min-w-0">
+                  <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">25 Mei
+                    2026</span>
+                  <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">Koordinasi ke DISKOMINFOS Provinsi Bali dalam Rangka Integrasi Bali Satu Data</h3>
+                </div>
+              </div>
+            </a>
+
+            <a href="preview-kegiatan5.html"
+              class="w-[calc(100%-0px)] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] flex flex-col justify-between bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5 flex-shrink-0">
+              <div class="flex flex-col items-center text-center gap-4">
+                <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
+                  <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 4" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-grow min-w-0">
+                  <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">29 April
+                    2026</span>
+                  <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">Rapat Koordinasi Pengelolaan SIH3 Wilayah Sungai Bali Penida</h3>
+                </div>
+              </div>
+            </a>
+
+            <a href="preview-kegiatan4.html"
+              class="w-[calc(100%-0px)] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] flex flex-col justify-between bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5 flex-shrink-0">
+              <div class="flex flex-col items-center text-center gap-4">
+                <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
+                  <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 4" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-grow min-w-0">
+                  <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">15 Agustus
+                    2024</span>
+                  <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">Revisi Draft Tabel 1
+                    dan Tabel 2</h3>
+                </div>
+              </div>
+            </a>
+
+            <a href="preview-kegiatan3.html"
+              class="w-[calc(100%-0px)] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] flex flex-col justify-between bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5 flex-shrink-0">
+              <div class="flex flex-col items-center text-center gap-4">
+                <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
+                  <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 3" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-grow min-w-0">
+                  <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">29 Juli
+                    2024</span>
+                  <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">Penyampaian Draft
+                    Tabel 1 dan Tabel 2...</h3>
+                </div>
+              </div>
+            </a>
+
+            <a href="preview-kegiatan2.html"
+              class="w-[calc(100%-0px)] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] flex flex-col justify-between bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5 flex-shrink-0">
+              <div class="flex flex-col items-center text-center gap-4">
+                <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
+                  <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 2" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-grow min-w-0">
+                  <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">19 Juli
+                    2024</span>
+                  <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">Rapat Pokja PSIH3
+                    dan/atau Sidang Komisi IV...</h3>
+                </div>
+              </div>
+            </a>
+
+            <a href="preview-kegiatan1.html"
+              class="w-[calc(100%-0px)] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] flex flex-col justify-between bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5 flex-shrink-0">
+              <div class="flex flex-col items-center text-center gap-4">
+                <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
+                  <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 1" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-grow min-w-0">
+                  <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">03 Mei
+                    2024</span>
+                  <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">Pembaruan Pokja PSIH3
+                  </h3>
+                </div>
+              </div>
+            </a>
+
           </div>
-        </a>
-
-        <a href="preview-kegiatan3.html"
-          class="flex flex-col justify-between bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5">
-          <div class="flex flex-col items-center text-center gap-4">
-            <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
-              <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 3" class="w-full h-full object-cover">
-            </div>
-
-            <div class="flex-grow min-w-0">
-              <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">
-                29 Juli 2024
-              </span>
-              <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">
-                Penyampaian Draft Tabel 1 dan Tabel 2 kepada Pembina PSIH3 dan Pembina TKPSDA
-              </h3>
-            </div>
-          </div>
-        </a>
-
-        <a href="preview-kegiatan2.html"
-          class="flex flex-col justify-between bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5">
-          <div class="flex flex-col items-center text-center gap-4">
-            <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
-              <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 2" class="w-full h-full object-cover">
-            </div>
-
-            <div class="flex-grow min-w-0">
-              <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">
-                19 Juli 2024
-              </span>
-              <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">
-                Rapat Pokja PSIH3 dan/atau Sidang Komisi IV TKPSDA WS Bali-Penida
-              </h3>
-            </div>
-          </div>
-        </a>
-
-        <a href="preview-kegiatan1.html"
-          class="flex flex-col justify-between bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5">
-          <div class="flex flex-col items-center text-center gap-4">
-            <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
-              <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 1" class="w-full h-full object-cover">
-            </div>
-
-            <div class="flex-grow min-w-0">
-              <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">
-                03 Mei 2024
-              </span>
-              <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">
-                Pembaruan Pokja PSIH3
-              </h3>
-            </div>
-          </div>
-        </a>
-
+        </div>
       </div>
 
-      <div class="mt-10 text-center">
+      <div class="mt-6 text-center">
         <button data-tab="kegiatan"
           class="tab-btn inline-flex items-center justify-center px-6 py-3 border border-slate-200 rounded bg-amber-500 hover:bg-amber-600 text-[var(--mist)] font-semibold text-sm shadow-sm hover:shadow transition-all duration-200 gap-2">
           Lihat Semua Kegiatan
         </button>
       </div>
     </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const track = document.getElementById("slider-track");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const cards = track.children;
+
+        let currentIndex = 0;
+        let autoPlayInterval;
+        const delayTime = 3000;
+
+        function getVisibleCardsCount() {
+          if (window.innerWidth >= 1024) return 4;
+          if (window.innerWidth >= 640) return 2;
+          return 1;                                
+        }
+
+        function updateSlider() {
+          const visibleCards = getVisibleCardsCount();
+          const maxIndex = cards.length - visibleCards;
+
+          if (currentIndex > maxIndex) currentIndex = 0;
+          if (currentIndex < 0) currentIndex = maxIndex;
+
+          const cardWidth = cards[0].getBoundingClientRect().width;
+          const gap = 24;
+          const moveDistance = currentIndex * (cardWidth + gap);
+
+          track.style.transform = `translateX(-${moveDistance}px)`;
+        }
+
+        function nextSlide() {
+          currentIndex++;
+          updateSlider();
+        }
+
+        function prevSlide() {
+          currentIndex--;
+          updateSlider();
+        }
+
+        function startAutoPlay() {
+          autoPlayInterval = setInterval(nextSlide, delayTime);
+        }
+
+        function stopAutoPlay() {
+          clearInterval(autoPlayInterval);
+        }
+
+        nextBtn.addEventListener("click", () => {
+          nextSlide();
+          stopAutoPlay();
+          startAutoPlay();
+        });
+
+        prevBtn.addEventListener("click", () => {
+          prevSlide();
+          stopAutoPlay();
+          startAutoPlay();
+        });
+
+        track.addEventListener("mouseenter", stopAutoPlay);
+        track.addEventListener("mouseleave", startAutoPlay);
+
+        startAutoPlay();
+
+        window.addEventListener("resize", updateSlider);
+      });
+    </script>
 
     <!-- Mengapa Pengelolaan SIH3 Sangat Penting? -->
     <section id="why-sih3-urgency" class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 sm:mt-20">
@@ -3121,6 +3243,26 @@
               <div class="flex items-center gap-2">
                 <span class="text-[var(--sea)] font-medium">IG:</span>
                 <span class="truncate">@dpuprkim_karangasem</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm flex flex-col justify-between text-xs text-slate-600">
+            <div class="space-y-3">
+              <div>
+                <div class="font-bold text-sm text-[var(--ink)]">Dinas Komunikasi, Informatika dan Statistik Provinsi Bali</div>
+              </div>
+              <p class="line-clamp-3">Jl. D.I Panjaitan no.7, Denpasar, Bali</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-[11px]">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-[var(--sea)] font-medium">Email:</span>
+                <span class="truncate">diskominfos.baliprov.go.id</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[var(--sea)] font-medium">IG:</span>
+                <span class="truncate">@diskominfos_bali</span>
               </div>
             </div>
           </div>
