@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" href="gambar/bali.png" type="image/png">
+  <link rel="icon" href="gambar/tkpsdaBali.png" type="image/png">
   <link
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:wght@500;600;700&display=swap"
     rel="stylesheet">
@@ -975,6 +975,8 @@
   <!-- Leaflet Map Library (Required for Hidrologi Section) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script src="https://forminit.com/sdk/v1/forminit.js"></script>
 </head>
 
 <body class="min-h-screen">
@@ -983,6 +985,9 @@
   <header class="bg-white/90 backdrop-blur border-b border-slate-200 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex items-center justify-between gap-3 sm:gap-6">
       <div class="flex items-center gap-3 min-w-0">
+
+        <img src="gambar/tkpsdaBali.png" alt="Logo TKPSDA" class="h-10 w-auto object-contain shrink-0" />
+
         <div class="leading-tight min-w-0">
           <div class="font-display text-base sm:text-lg font-semibold text-[var(--ink)] truncate">Portal SIH3</div>
           <div class="text-xs sm:text-sm text-slate-500">Wilayah Sungai Bali Penida</div>
@@ -1021,10 +1026,35 @@
           </div>
         </div>
 
-        <button data-tab="dokumen"
+        <div class="relative group py-2">
+          <button
+            class="px-4 py-2 rounded-md text-slate-700 hover:bg-slate-100 inline-flex items-center gap-2 focus:outline-none">
+            <span>Dokumen PSIH3</span>
+            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor"
+              stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div
+            class="absolute left-0 top-full hidden group-hover:flex flex-col w-52 bg-white rounded-md shadow-lg py-2 z-50 border border-slate-100">
+
+            <a href="https://drive.google.com/file/d/1DEXcYlmaHBMMjQ5dPT8Lqh5g64rP_Zz6/view?usp=sharing" target="_blank"
+              class="block w-full text-left px-4 py-2 text-slate-700 hover:bg-slate-100">
+              Dasar Hukum
+            </a>
+
+            <a href="https://drive.google.com/file/d/1YHutzAQVfFs3e_4mTAUuW-cJ2tCEAScJ/view?usp=sharing" target="_blank"
+              class="block w-full text-left px-4 py-2 text-slate-700 hover:bg-slate-100">
+              Nota Kesepakatan
+            </a>
+          </div>
+        </div>
+
+        <!-- <button data-tab="dokumen"
           class="tab-btn px-4 py-2 rounded-md text-slate-700 hover:bg-slate-100 inline-flex items-center gap-2">
           Dokumen PSIH3
-        </button>
+        </button> -->
 
         <button data-tab="kontak"
           class="tab-btn px-4 py-2 rounded-md text-slate-700 hover:bg-slate-100 inline-flex items-center gap-2">
@@ -1032,10 +1062,10 @@
         </button>
       </nav>
 
-      <a href="#"
+      <!-- <a href="#"
         class="hidden lg:inline-flex items-center gap-2 bg-[var(--gold)] hover:bg-amber-500 text-[var(--mist)] font-semibold text-md px-5 py-3 rounded-md shrink-0">
         Login
-      </a>
+      </a> -->
 
       <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-slate-100 text-[var(--ink)]"
         aria-label="Menu">
@@ -1060,35 +1090,50 @@
             class="tab-btn text-left px-4 py-2 rounded-xl text-slate-700 hover:bg-slate-100">Hidrogeologi</button>
         </div>
 
-        <button data-tab="dokumen"
-          class="tab-btn text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100">Dokumen PSIH3</button>
+        <div class="text-slate-400 px-4 pt-2 pb-1 text-xs font-bold uppercase tracking-wider">Dokumen PSIH3</div>
+        <div class="pl-4 flex flex-col gap-1 border-l-2 border-slate-100 ml-4 mb-2">
+          <a href="https://drive.google.com/file/d/1DEXcYlmaHBMMjQ5dPT8Lqh5g64rP_Zz6/view?usp=sharing" target="_blank"
+            class="text-left px-4 py-2 rounded-xl text-slate-700 hover:bg-slate-100">Dasar Hukum</a>
+          <a href="https://drive.google.com/file/d/1YHutzAQVfFs3e_4mTAUuW-cJ2tCEAScJ/view?usp=sharing" target="_blank"
+            class="text-left px-4 py-2 rounded-xl text-slate-700 hover:bg-slate-100">Nota Kesepakatan</a>
+        </div>
+
+        <!-- <button data-tab="dokumen"
+          class="tab-btn text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100">Dokumen PSIH3</button> -->
         <button data-tab="kontak"
           class="tab-btn text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100">Kontak</button>
 
-        <a href="#"
-          class="mt-2 inline-flex items-center justify-center gap-2 bg-[var(--gold)] text-[var(--ink)] font-semibold px-4 py-3 rounded-md">Login</a>
+        <!-- <a href="#"
+          class="mt-2 inline-flex items-center justify-center gap-2 bg-[var(--gold)] text-[var(--ink)] font-semibold px-4 py-3 rounded-md">Login</a> -->
       </nav>
     </div>
   </header>
 
   <!-- ============== HOME ============== -->
   <section id="page-home" class="page active">
-    <div class="hero relative text-white overflow-hidden">
+    <div class="hero relative text-white overflow-hidden bg-slate-900">
+      <img
+        src="https://sda.pu.go.id/balai/bwsbalipenida/storage/old/homeassets/slider/img-15-cef72f5b29e4aa732fee76ddb0eed887.webp"
+        alt="Background Wilayah Sungai" class="absolute inset-0 w-full h-full object-cover opacity-50" />
+
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20 pointer-events-none"></div>
+
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-40 sm:pb-48 lg:pb-56 flex flex-col items-center justify-center text-center relative">
+        class="max-w-7xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-40 sm:pb-48 lg:pb-56 flex flex-col items-center justify-center text-center relative z-10">
         <div class="max-w-4xl">
-          <h1 class="font-display text-3xl sm:text-4xl md:text-6xl font-semibold mt-10 leading-[1.1]">
+          <h1 class="font-display text-xl sm:text-2xl md:text-4xl font-semibold mt-10 leading-[1.1]">
             Selamat datang di
             <div>
               <span style="color: var(--gold);">Portal Sistem Informasi Hidrologi, Hidrometeorologi, dan Hidrogeologi
-                (SIH3)
-              </span> Wilayah Sungai Bali Penida
+                (SIH3)</span>
+              Wilayah Sungai Bali Penida
             </div>
           </h1>
         </div>
-
       </div>
-      <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" width="100%" height="80">
+
+      <!-- 4. Elemen Wave/Ombak -->
+      <svg class="wave relative z-10" viewBox="0 0 1440 80" preserveAspectRatio="none" width="100%" height="80">
         <path fill="#f8fafc" d="M0,32 C240,80 480,80 720,48 C960,16 1200,16 1440,48 L1440,80 L0,80 Z" />
       </svg>
     </div>
@@ -1103,39 +1148,21 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
 
-        <a href="preview-kegiatan1.html"
+        <a href="preview-kegiatan4.html"
           class="flex flex-col justify-between bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5">
-          <div class="flex items-start gap-4">
+          <div class="flex flex-col items-center text-center gap-4">
             <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
-              <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 1" class="w-full h-full object-cover">
+              <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 3" class="w-full h-full object-cover">
             </div>
 
             <div class="flex-grow min-w-0">
               <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">
-                25 Mei 2026
+                15 Agustus 2024
               </span>
               <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">
-                Koordinasi ke DISKOMINFOS Prov Bali dalam Rangka Integrasi Bali Satu Data
-              </h3>
-            </div>
-          </div>
-        </a>
-
-        <a href="preview-kegiatan2.html"
-          class="flex flex-col justify-between bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5">
-          <div class="flex items-start gap-4">
-            <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
-              <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 2" class="w-full h-full object-cover">
-            </div>
-
-            <div class="flex-grow min-w-0">
-              <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">
-                29 April 2026
-              </span>
-              <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">
-                Rapat Koordinasi Pengelolaan SIH3 Wilayah Sungai Bali-Penida
+                Revisi Draft Tabel 1 dan Tabel 2
               </h3>
             </div>
           </div>
@@ -1143,17 +1170,53 @@
 
         <a href="preview-kegiatan3.html"
           class="flex flex-col justify-between bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5">
-          <div class="flex items-start gap-4">
+          <div class="flex flex-col items-center text-center gap-4">
             <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
               <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 3" class="w-full h-full object-cover">
             </div>
 
             <div class="flex-grow min-w-0">
               <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">
-                30 Juni 2026
+                29 Juli 2024
               </span>
               <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">
-                Sidang Pleno Pembahasan PSIH3
+                Penyampaian Draft Tabel 1 dan Tabel 2 kepada Pembina PSIH3 dan Pembina TKPSDA
+              </h3>
+            </div>
+          </div>
+        </a>
+
+        <a href="preview-kegiatan2.html"
+          class="flex flex-col justify-between bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5">
+          <div class="flex flex-col items-center text-center gap-4">
+            <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
+              <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 2" class="w-full h-full object-cover">
+            </div>
+
+            <div class="flex-grow min-w-0">
+              <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">
+                19 Juli 2024
+              </span>
+              <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">
+                Rapat Pokja PSIH3 dan/atau Sidang Komisi IV TKPSDA WS Bali-Penida
+              </h3>
+            </div>
+          </div>
+        </a>
+
+        <a href="preview-kegiatan1.html"
+          class="flex flex-col justify-between bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5">
+          <div class="flex flex-col items-center text-center gap-4">
+            <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
+              <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 1" class="w-full h-full object-cover">
+            </div>
+
+            <div class="flex-grow min-w-0">
+              <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">
+                03 Mei 2024
+              </span>
+              <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">
+                Pembaruan Pokja PSIH3
               </h3>
             </div>
           </div>
@@ -1162,10 +1225,10 @@
       </div>
 
       <div class="mt-10 text-center">
-        <a href="#"
-          class="inline-flex items-center justify-center px-6 py-3 border border-slate-200 rounded bg-[var(--gold)] hover:bg-amber-500 text-[var(--mist)] font-semibold text-sm shadow-sm hover:shadow transition-all duration-200 gap-2">
+        <button data-tab="kegiatan"
+          class="tab-btn inline-flex items-center justify-center px-6 py-3 border border-slate-200 rounded bg-amber-500 hover:bg-amber-600 text-[var(--mist)] font-semibold text-sm shadow-sm hover:shadow transition-all duration-200 gap-2">
           Lihat Semua Kegiatan
-        </a>
+        </button>
       </div>
     </section>
 
@@ -1425,7 +1488,7 @@
                   <option value="Curah Hujan">Curah Hujan (ARR)</option>
                   <option value="Tinggi Muka Air">Tinggi Muka Air (TMA)</option>
                   <option value="Water Level">Water Level Pemantauan</option>
-                  <option value="Kualitas Air">Kualitas Air Bersih</option>
+                  <!-- <option value="Kualitas Air">Kualitas Air Bersih</option> -->
                 </select>
               </div>
               <div>
@@ -1550,11 +1613,239 @@
         </div>
       </div>
 
+      <div
+        class="w-full mt-5 mb-6 relative group bg-white p-4 rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+        <h3 class="text-md font-bold text-[var(--ink)] mb-4 flex items-center gap-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <polyline points="21 15 16 10 5 21" />
+          </svg>
+          Data Hidrologi Lain
+        </h3>
+
+        <div class="relative overflow-hidden w-full">
+          <div id="card-slider-track" class="flex transition-transform duration-500 ease-in-out gap-4">
+
+            <div
+              class="w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] shrink-0 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden shadow-sm flex flex-col">
+              <div class="w-full h-64 bg-slate-900 flex items-center justify-center p-2">
+                <img src="gambar/cover-2015-1.jpg" class="max-w-full max-h-full object-contain" alt="Publikasi 2015">
+              </div>
+              <div class="p-3 bg-white border-t border-slate-50">
+                <p class="text-xs font-semibold text-[var(--ink)]">Publikasi Data Hidrologi dan Kualitas Air Provinsi
+                  Bali 2015</p>
+                <span class="text-[10px] text-slate-400 block mt-0.5">Balai Wilayah Sungai Bali Penida</span>
+              </div>
+            </div>
+
+            <div
+              class="w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] shrink-0 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden shadow-sm flex flex-col">
+              <div class="w-full h-64 bg-slate-900 flex items-center justify-center p-2">
+                <img src="gambar/cover-2016-1.jpg" class="max-w-full max-h-full object-contain" alt="Publikasi 2016">
+              </div>
+              <div class="p-3 bg-white border-t border-slate-50">
+                <p class="text-xs font-semibold text-[var(--ink)]">Publikasi Data Hidrologi dan Kualitas Air Provinsi
+                  Bali 2016</p>
+                <span class="text-[10px] text-slate-400 block mt-0.5">Balai Wilayah Sungai Bali Penida</span>
+              </div>
+            </div>
+
+            <div
+              class="w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] shrink-0 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden shadow-sm flex flex-col">
+              <div class="w-full h-64 bg-slate-900 flex items-center justify-center p-2">
+                <img src="gambar/cover-2017-1.jpg" class="max-w-full max-h-full object-contain" alt="Publikasi 2017">
+              </div>
+              <div class="p-3 bg-white border-t border-slate-50">
+                <p class="text-xs font-semibold text-[var(--ink)]">Publikasi Data Hidrologi dan Kualitas Air Provinsi
+                  Bali 2017</p>
+                <span class="text-[10px] text-slate-400 block mt-0.5">Balai Wilayah Sungai Bali Penida</span>
+              </div>
+            </div>
+
+            <div
+              class="w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] shrink-0 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden shadow-sm flex flex-col">
+              <div class="w-full h-64 bg-slate-900 flex items-center justify-center p-2">
+                <img src="gambar/cover-2018-1.jpg" class="max-w-full max-h-full object-contain" alt="Publikasi 2018">
+              </div>
+              <div class="p-3 bg-white border-t border-slate-50">
+                <p class="text-xs font-semibold text-[var(--ink)]">Publikasi Data Hidrologi dan Kualitas Air Provinsi
+                  Bali 2018</p>
+                <span class="text-[10px] text-slate-400 block mt-0.5">Balai Wilayah Sungai Bali Penida</span>
+              </div>
+            </div>
+
+            <div
+              class="w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] shrink-0 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden shadow-sm flex flex-col">
+              <div class="w-full h-64 bg-slate-900 flex items-center justify-center p-2">
+                <img src="gambar/cover-2019-1.jpg" class="max-w-full max-h-full object-contain" alt="Publikasi 2019">
+              </div>
+              <div class="p-3 bg-white border-t border-slate-50">
+                <p class="text-xs font-semibold text-[var(--ink)]">Publikasi Data Hidrologi dan Kualitas Air Provinsi
+                  Bali 2019</p>
+                <span class="text-[10px] text-slate-400 block mt-0.5">Balai Wilayah Sungai Bali Penida</span>
+              </div>
+            </div>
+
+            <div
+              class="w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] shrink-0 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden shadow-sm flex flex-col">
+              <div class="w-full h-64 bg-slate-900 flex items-center justify-center p-2">
+                <img src="gambar/cover-2020-1.jpg" class="max-w-full max-h-full object-contain" alt="Publikasi 2020">
+              </div>
+              <div class="p-3 bg-white border-t border-slate-50">
+                <p class="text-xs font-semibold text-[var(--ink)]">Publikasi Data Hidrologi dan Kualitas Air Provinsi
+                  Bali 2020</p>
+                <span class="text-[10px] text-slate-400 block mt-0.5">Balai Wilayah Sungai Bali Penida</span>
+              </div>
+            </div>
+
+            <div
+              class="w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] shrink-0 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden shadow-sm flex flex-col">
+              <div class="w-full h-64 bg-slate-900 flex items-center justify-center p-2">
+                <img src="gambar/cover-2021-1.jpg" class="max-w-full max-h-full object-contain" alt="Publikasi 2021">
+              </div>
+              <div class="p-3 bg-white border-t border-slate-50">
+                <p class="text-xs font-semibold text-[var(--ink)]">Publikasi Data Hidrologi dan Kualitas Air Provinsi
+                  Bali 2021</p>
+                <span class="text-[10px] text-slate-400 block mt-0.5">Balai Wilayah Sungai Bali Penida</span>
+              </div>
+            </div>
+
+            <div
+              class="w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] shrink-0 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden shadow-sm flex flex-col">
+              <div class="w-full h-64 bg-slate-900 flex items-center justify-center p-2">
+                <img src="gambar/cover-2022-1.jpg" class="max-w-full max-h-full object-contain" alt="Publikasi 2022">
+              </div>
+              <div class="p-3 bg-white border-t border-slate-50">
+                <p class="text-xs font-semibold text-[var(--ink)]">Publikasi Data Hidrologi dan Kualitas Air Provinsi
+                  Bali 2022</p>
+                <span class="text-[10px] text-slate-400 block mt-0.5">Balai Wilayah Sungai Bali Penida</span>
+              </div>
+            </div>
+
+            <div
+              class="w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] shrink-0 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden shadow-sm flex flex-col">
+              <div class="w-full h-64 bg-slate-900 flex items-center justify-center p-2">
+                <img src="gambar/cover-2023-1.jpg" class="max-w-full max-h-full object-contain" alt="Publikasi 2023">
+              </div>
+              <div class="p-3 bg-white border-t border-slate-50">
+                <p class="text-xs font-semibold text-[var(--ink)]">Publikasi Data Hidrologi dan Kualitas Air Provinsi
+                  Bali 2023</p>
+                <span class="text-[10px] text-slate-400 block mt-0.5">Balai Wilayah Sungai Bali Penida</span>
+              </div>
+            </div>
+
+            <div
+              class="w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] shrink-0 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden shadow-sm flex flex-col">
+              <div class="w-full h-64 bg-slate-900 flex items-center justify-center p-2">
+                <img src="gambar/cover-2024-1.jpg" class="max-w-full max-h-full object-contain" alt="Publikasi 2024">
+              </div>
+              <div class="p-3 bg-white border-t border-slate-50">
+                <p class="text-xs font-semibold text-[var(--ink)]">Publikasi Data Hidrologi dan Kualitas Air Provinsi
+                  Bali 2024</p>
+                <span class="text-[10px] text-slate-400 block mt-0.5">Balai Wilayah Sungai Bali Penida</span>
+              </div>
+            </div>
+
+            <div
+              class="w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] shrink-0 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden shadow-sm flex flex-col">
+              <div class="w-full h-64 bg-slate-900 flex items-center justify-center p-2">
+                <img src="gambar/cover-2025-1.jpg" class="max-w-full max-h-full object-contain" alt="Publikasi 2025">
+              </div>
+              <div class="p-3 bg-white border-t border-slate-50">
+                <p class="text-xs font-semibold text-[var(--ink)]">Publikasi Data Hidrologi dan Kualitas Air Provinsi
+                  Bali 2025</p>
+                <span class="text-[10px] text-slate-400 block mt-0.5">Balai Wilayah Sungai Bali Penida</span>
+              </div>
+            </div>
+
+          </div>
+
+          <button id="card-prev"
+            class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-md text-slate-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:outline-none z-10">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <button id="card-next"
+            class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-md text-slate-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:outline-none z-10">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const track = document.getElementById("card-slider-track");
+          const cards = track.children;
+          const totalCards = cards.length;
+          const nextBtn = document.getElementById("card-next");
+          const prevBtn = document.getElementById("card-prev");
+
+          let currentIndex = 0;
+          let autoSlideInterval;
+
+          function getVisibleCardsCount() {
+            if (window.innerWidth >= 1024) return 4;
+            if (window.innerWidth >= 768) return 2;
+            return 1;
+          }
+
+          function moveSlider() {
+            const visibleCards = getVisibleCardsCount();
+            const maxIndex = totalCards - visibleCards;
+
+            if (currentIndex > maxIndex) {
+              currentIndex = 0;
+            } else if (currentIndex < 0) {
+              currentIndex = maxIndex;
+            }
+
+            const cardWidth = cards[0].getBoundingClientRect().width;
+            const gap = 16;
+            const totalShift = currentIndex * (cardWidth + gap);
+
+            track.style.transform = `translateX(-${totalShift}px)`;
+          }
+
+          function nextSlide() {
+            currentIndex++;
+            moveSlider();
+          }
+
+          function prevSlide() {
+            currentIndex--;
+            moveSlider();
+          }
+
+          function startAutoplay() {
+            autoSlideInterval = setInterval(nextSlide, 4000); // Geser otomatis tiap 4 detik
+          }
+
+          function resetAutoplay() {
+            clearInterval(autoSlideInterval);
+            startAutoplay();
+          }
+
+          nextBtn.addEventListener("click", () => { nextSlide(); resetAutoplay(); });
+          prevBtn.addEventListener("click", () => { prevSlide(); resetAutoplay(); });
+
+          track.parentElement.addEventListener("mouseenter", () => clearInterval(autoSlideInterval));
+          track.parentElement.addEventListener("mouseleave", startAutoplay);
+          window.addEventListener("resize", moveSlider);
+
+          startAutoplay();
+        });
+      </script>
+
       <div class="mt-10 text-center">
         <button
           onclick="document.getElementById('myModal').classList.remove('hidden'); document.getElementById('myModal').classList.add('flex')"
-          class="inline-flex items-center justify-center px-6 py-3 border border-slate-200 rounded bg-[var(--gold)] hover:bg-amber-500 text-[var(--mist)] font-semibold text-sm shadow-sm hover:shadow transition-all duration-200 gap-2">
-          Unduh Data Hidrologi
+          class="inline-flex items-center justify-center px-6 py-3.5 rounded bg-amber-500 hover:bg-amber-600 text-white font-medium text-sm shadow-sm hover:shadow-md transition-all duration-200 gap-2 focus:ring-4 focus:ring-amber-100 outline-none">
+          Permohonan Data Hidrologi
         </button>
       </div>
 
@@ -1564,7 +1855,7 @@
         <div class="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden transform transition-all scale-100">
 
           <div class="bg-blue-600 px-6 py-4 flex justify-between items-center text-white">
-            <h3 class="text-lg font-semibold">Formulir Pengajuan Unduh Data</h3>
+            <h3 class="text-lg font-semibold">Formulir Pengajuan Permohonan Data Hidrologi</h3>
             <button
               onclick="document.getElementById('myModal').classList.add('hidden'); document.getElementById('myModal').classList.remove('flex')"
               class="text-white hover:text-gray-200 focus:outline-none text-xl font-bold">
@@ -1622,7 +1913,7 @@
               </button>
               <button type="submit" id="btnSubmit"
                 class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none shadow-md">
-                Kirim Ajuan
+                Kirim
               </button>
             </div>
 
@@ -1630,17 +1921,40 @@
         </div>
       </div>
 
-      <!-- pop up alert -->
+      <!-- warning alert -->
       <div id="alert-banner"
         class="fixed top-5 right-5 z-50 transform translate-y-[-20px] opacity-0 transition-all duration-500 ease-out pointer-events-none">
-        <div id="alert-box" class="flex items-center p-4 mb-4 text-sm rounded-lg shadow-lg border" role="alert">
-
-          <div id="alert-icon" class="flex-shrink-0 inline me-3"></div>
-
-          <span class="sr-only">Status info</span>
+        <div
+          class="flex items-center p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 shadow-lg border border-yellow-200"
+          role="alert">
+          <!-- Danger Icon -->
+          <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor" viewBox="0 0 20 20">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          <span class="sr-only">Danger info</span>
           <div>
-            <span id="alert-title" class="font-medium mr-1">Perhatian!</span>
-            <span id="alert-message">Ukuran Surat Permohonan maksimal 500 KB.</span>
+            <span class="font-medium">Perhatian!</span> Ukuran Surat Permohonan maksimal 500 KB.
+          </div>
+        </div>
+      </div>
+
+      <!-- success alert -->
+      <div id="success-alert-banner"
+        class="fixed top-5 right-5 z-50 transform translate-y-[-20px] opacity-0 transition-all duration-500 ease-out pointer-events-none">
+        <div
+          class="flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 shadow-lg border border-green-200"
+          role="alert">
+          <!-- Success Icon -->
+          <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://w3.org" fill="currentColor"
+            viewBox="0 0 20 20">
+            <path
+              d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+          </svg>
+          <span class="sr-only">Success info</span>
+          <div>
+            <span class="font-medium">Selamat!</span> Formulir Pengajuan Unduh Data Berhasil Dikirim!
           </div>
         </div>
       </div>
@@ -1648,152 +1962,75 @@
     </main>
 
     <script>
-      const API_CONFIG = {
-        URL: 'https://script.google.com/macros/s/AKfycbxb10hyhnh06Y7x68RHJ393jQCcnw_5TMuaxDShjaB4k2I5CLqqtlOgez0JK7rFqyxKrg/exec',
-        TOKEN: 'vWlBmC9mBPieNpLfPeWz9b2DGFlNSlfI'
-      };
+      const forminit = new Forminit();
+      const FORM_ID = "6t89mt45r9s";
 
-      const FILE_LIMIT_KB = 500;
+      function showWarningAlert() {
+        const alert = document.getElementById('alert-banner');
 
-      async function getClientIp() {
-        try {
-          const response = await fetch('https://api.ipify.org?format=json', {
-            method: 'GET',
-            cache: 'no-store'
-          })
-      
-          if (!response.ok) {
-            throw new Error('Gagal mengambil IP client')
-          }
-      
-          const data = await response.json()
-          return data.ip || ''
-        } catch (error) {
-          console.warn('Client IP tidak dapat diambil:', error)
-          return ''
-        }
-      }
-
-      function showAlert(message, type = 'warning') {
-        const banner = document.getElementById('alert-banner');
-        const alertBox = document.getElementById('alert-box');
-        const alertIcon = document.getElementById('alert-icon');
-        const alertTitle = document.getElementById('alert-title');
-        const alertMessage = document.getElementById('alert-message');
-
-        const icons = {
-          warning: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>`,
-          success: `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>`
-        };
-
-        // Reset layout dasar box
-        alertBox.className = "flex items-center p-4 mb-4 text-sm rounded-lg shadow-lg border";
-
-        if (type === 'success') {
-          alertBox.classList.add('text-green-800', 'bg-green-50', 'border-green-200');
-          alertTitle.innerText = "Sukses!";
-        } else {
-          alertBox.classList.add('text-yellow-800', 'bg-yellow-50', 'border-yellow-200');
-          alertTitle.innerText = "Perhatian!";
-        }
-
-        alertIcon.innerHTML = icons[type] || icons.warning;
-        alertMessage.innerText = message;
-
-        banner.classList.remove('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
-        banner.classList.add('opacity-100', 'translate-y-0');
+        alert.classList.remove('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
+        alert.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
 
         setTimeout(() => {
-          banner.classList.remove('opacity-100', 'translate-y-0');
-          banner.classList.add('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
+          alert.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+          alert.classList.add('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
         }, 4000);
       }
 
-      function readFileAsBase64(file) {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = (event) => resolve(event.target.result.split(',')[1]);
-          reader.onerror = (error) => reject(error);
-          reader.readAsDataURL(file);
-        });
+      function showSuccessAlert() {
+        const successAlert = document.getElementById('success-alert-banner');
+
+        successAlert.classList.remove('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
+        successAlert.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+
+        setTimeout(() => {
+          successAlert.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+          successAlert.classList.add('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
+        }, 4000);
       }
 
-      function closeModal() {
-        const modal = document.getElementById('myModal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }
+      document.getElementById('downloadForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
 
-      document.getElementById('downloadForm').addEventListener('submit', async function (e) {
-        e.preventDefault();
-
+        const form = event.target;
         const btnSubmit = document.getElementById('btnSubmit');
         const fileInput = document.getElementById('surat_permohonan');
-        const file = fileInput.files[0];
 
-        const clientIp = await getClientIp();
+        if (fileInput.files.length > 0) {
+          const file = fileInput.files[0];
+          const maxSizeInBytes = 500 * 1024;
 
-        if (!file) {
-          showAlert('Silakan pilih file Surat Permohonan terlebih dahulu.', 'warning');
-          return;
-        }
+          if (file.size > maxSizeInBytes) {
+            //alert(`Ukuran file terlalu besar (${(file.size / 1024).toFixed(1)} KB). Maksimal ukuran file yang diperbolehkan adalah 500 KB.`);
+            showWarningAlert();
 
-        if (file.size > FILE_LIMIT_KB * 1024) {
-          showAlert(`Ukuran Surat Permohonan melebihi limit maksimal ${FILE_LIMIT_KB} KB.`, 'warning');
-          fileInput.value = "";
-          return;
-        }
-
-        if (file.type !== "application/pdf") {
-          showAlert('Format file tidak didukung. Hanya menerima file pdf', 'warning');
-          fileInput.value = "";
-          return;
+            fileInput.value = "";
+            return;
+          }
         }
 
         btnSubmit.disabled = true;
-        btnSubmit.innerText = 'Sedang Mengirim...';
+        btnSubmit.innerText = 'Mengirim...';
 
-        try {
-          const base64String = await readFileAsBase64(file);
+        const formData = new FormData(form);
 
-          const payload = {
-            secretToken: API_CONFIG.TOKEN,
-            fullName: document.getElementById('nama').value,
-            email: document.getElementById('email_user').value,
-            company: document.getElementById('instansi').value,
-            jenisData: document.getElementById('jenis_data').value,
-            tujuan: document.getElementById('tujuan').value,
-            clientIp: clientIp,
-            file: {
-              base64: base64String,
-              name: file.name,
-              type: file.type
-            }
-          };
+        const { data, error } = await forminit.submit(FORM_ID, formData);
 
-          const response = await fetch(API_CONFIG.URL, {
-            method: 'POST',
-            mode: 'cors',
-            body: JSON.stringify(payload)
-          });
-
-          const result = await response.json();
-
-          if (result.status === 'success') {
-            showAlert('Formulir Pengajuan Unduh Data Berhasil Dikirim!', 'success');
-            this.reset();
-            closeModal();
-          } else {
-            showAlert('Gagal menyimpan: ' + result.message, 'warning');
-          }
-
-        } catch (error) {
-          console.error('Submission Error:', error);
-          showAlert('Terjadi kesalahan jaringan saat mengirim data.', 'warning');
-        } finally {
+        if (error) {
+          alert('Gagal mengirim: ' + error.message);
           btnSubmit.disabled = false;
-          btnSubmit.innerText = 'Kirim Ajuan';
+          btnSubmit.innerText = 'Kirim';
+          return;
         }
+
+        showSuccessAlert();
+        form.reset();
+
+        document.getElementById('myModal').classList.add('hidden');
+        document.getElementById('myModal').classList.remove('flex');
+
+        btnSubmit.disabled = false;
+        btnSubmit.innerText = 'Kirim Ajuan';
       });
     </script>
 
@@ -1837,9 +2074,9 @@
         const arrN = stations.filter(h => cat(h) === 'Curah Hujan').length;
         const tmaN = stations.filter(h => ['Tinggi Muka Air', 'Water Level'].includes(cat(h))).length;
         const qualN = stations.filter(h => cat(h) === 'Kualitas Air').length;
-        //document.getElementById('card-arr').textContent = arrN + ' stasiun';
-        //document.getElementById('card-tma').textContent = tmaN + ' stasiun';
-        //document.getElementById('card-qual').textContent = qualN + ' stasiun';
+        document.getElementById('card-arr').textContent = arrN + ' stasiun';
+        document.getElementById('card-tma').textContent = tmaN + ' stasiun';
+        document.getElementById('card-qual').textContent = qualN + ' stasiun';
 
         document.getElementById('empty-stats').innerHTML = `
     <div class="empty-stat-item"><span style="width:9px;height:9px;border-radius:50%;background:#22c55e;flex-shrink:0;"></span><strong>${aktif.length}</strong> stasiun aktif</div>
@@ -2033,81 +2270,374 @@
     </script>
   </section>
 
-  <section id="page-hidrometeorologi" class="page">
-    <div class="bg-gradient-to-b from-[var(--mist)] to-transparent border-b border-slate-200">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
-        <nav class="text-xs text-slate-500"><a href="#" data-tab="home"
-            class="tab-btn hover:text-[var(--sea)]">Beranda</a> <span class="mx-1">/</span> <span
-            class="text-[var(--ink)] font-medium">Hidrometeorologi</span></nav>
-        <div class="mt-5 flex items-start justify-between gap-6 flex-wrap">
-          <div>
-            <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-[var(--ink)] mt-2">
-              Hidrometeorologi</h1>
-          </div>
-          <span
-            class="inline-flex items-center gap-2 bg-amber-100 text-amber-800 border border-amber-200 rounded-full px-3 py-1.5 text-xs font-semibold">
-            <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-            Dalam pengembangan
-          </span>
-        </div>
-      </div>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12 grid lg:grid-cols-12 gap-8">
-      <div class="lg:col-span-8">
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 ring-soft">
-          <div class="flex items-center gap-3 text-[var(--aqua)] font-semibold text-sm">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 8v4l3 2" />
-            </svg>
-            Pemberitahuan
-          </div>
-          <h2 class="font-display text-xl sm:text-2xl md:text-3xl font-semibold text-[var(--ink)] mt-3 leading-snug">
-            Halaman ini sedang dalam tahap penyiapan dan pengembangan.
+  <section id="page-kegiatan" class="page">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12 space-y-12">
+      <div class="space-y-6">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold text-[var(--ink)]">
+            Kilas Kegiatan
           </h2>
-          <p class="text-slate-600 mt-4 leading-relaxed">
-            Mohon perhatian Anda bahwa laman yang berisi data dan/atau informasi <strong>Hidrometeorologi</strong> ini
-            sedang dalam tahap penyiapan dan pengembangan.
-            Kami berkomitmen untuk menyediakan akses yang komprehensif dan akurat terhadap data Hidrometeorologi di
-            Wilayah Sungai Bali Penida.
-            Kami bekerja keras untuk memastikan semua data dan/atau informasi yang disajikan relevan dan mudah diakses.
-          </p>
-          <p class="text-slate-600 mt-3 leading-relaxed">Terima kasih atas dukungan dan kontribusi Anda dalam
-            pengelolaan Sumber Daya Air di Wilayah Sungai Bali Penida.</p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#"
-              class="bg-[var(--ink)] text-white font-semibold text-sm px-4 py-2.5 rounded-full inline-flex items-center gap-2">
-              Lihat Data
-            </a>
-            <button data-tab="home"
-              class="tab-btn border border-slate-300 hover:bg-slate-50 font-semibold text-sm px-4 py-2.5 rounded-full">Kembali
-              ke Beranda</button>
-          </div>
         </div>
-        <div class="mt-6 grid sm:grid-cols-3 gap-4">
-          <div class="rounded-2xl border border-dashed border-slate-300 bg-white/50 p-5 text-center">
-            <div class="text-3xl">🌧️</div>
-            <div class="font-semibold text-[var(--ink)] mt-2">Prakiraan Hujan</div>
-            <div class="text-xs text-slate-500 mt-1">Segera hadir</div>
-          </div>
-          <div class="rounded-2xl border border-dashed border-slate-300 bg-white/50 p-5 text-center">
-            <div class="text-3xl">💨</div>
-            <div class="font-semibold text-[var(--ink)] mt-2">Prakiraan Kondisi Iklim dan Peringatan Dini Untuk Kondisi
-              Iklim Ekstrim</div>
-            <div class="text-xs text-slate-500 mt-1">Segera hadir</div>
-          </div>
-          <div class="rounded-2xl border border-dashed border-slate-300 bg-white/50 p-5 text-center">
-            <div class="text-3xl">🌡️</div>
-            <div class="font-semibold text-[var(--ink)] mt-2">Informasi Lain Terkait Dengan Kondisi Atmosfer</div>
-            <div class="text-xs text-slate-500 mt-1">Segera hadir</div>
-          </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+
+          <a href="preview-kegiatan4.html"
+            class="flex flex-col justify-between bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5">
+            <div class="flex flex-col items-center text-center gap-4">
+              <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
+                <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 3" class="w-full h-full object-cover">
+              </div>
+
+              <div class="flex-grow min-w-0">
+                <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">
+                  15 Agustus 2024
+                </span>
+                <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">
+                  Revisi Draft Tabel 1 dan Tabel 2
+                </h3>
+              </div>
+            </div>
+          </a>
+
+          <a href="preview-kegiatan3.html"
+            class="flex flex-col justify-between bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5">
+            <div class="flex flex-col items-center text-center gap-4">
+              <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
+                <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 3" class="w-full h-full object-cover">
+              </div>
+
+              <div class="flex-grow min-w-0">
+                <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">
+                  29 Juli 2024
+                </span>
+                <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">
+                  Penyampaian Draft Tabel 1 dan Tabel 2 kepada Pembina PSIH3 dan Pembina TKPSDA
+                </h3>
+              </div>
+            </div>
+          </a>
+
+          <a href="preview-kegiatan2.html"
+            class="flex flex-col justify-between bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5">
+            <div class="flex flex-col items-center text-center gap-4">
+              <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
+                <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 2" class="w-full h-full object-cover">
+              </div>
+
+              <div class="flex-grow min-w-0">
+                <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">
+                  19 Juli 2024
+                </span>
+                <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">
+                  Rapat Pokja PSIH3 dan/atau Sidang Komisi IV TKPSDA WS Bali-Penida
+                </h3>
+              </div>
+            </div>
+          </a>
+
+          <a href="preview-kegiatan1.html"
+            class="flex flex-col justify-between bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 p-5">
+            <div class="flex flex-col items-center text-center gap-4">
+              <div class="h-20 w-20 flex-shrink-0 overflow-hidden bg-slate-100 rounded-2xl">
+                <img src="gambar/tkpsdaBali.webp" alt="Nama Kegiatan 1" class="w-full h-full object-cover">
+              </div>
+
+              <div class="flex-grow min-w-0">
+                <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">
+                  03 Mei 2024
+                </span>
+                <h3 class="font-display text-base font-semibold text-[var(--ink)] leading-tight">
+                  Pembaruan Pokja PSIH3
+                </h3>
+              </div>
+            </div>
+          </a>
+
         </div>
       </div>
     </div>
   </section>
 
+  <section id="page-hidrometeorologi" class="page bg-slate-50/50 min-h-screen">
+    <header class="page-header">
+      <div class="page-header-inner">
+        <nav class="breadcrumb">
+          <a href="#">Beranda</a> <span style="margin:0 4px;">/</span>
+          <span style="font-weight:600;color:var(--ink);">Hidrometeorologi</span>
+        </nav>
+        <div class="header-row">
+          <div>
+            <h1 class="header-title">Informasi Hidrometeorologi</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+      <div class="grid md:grid-cols-3 gap-8 items-stretch">
+
+        <div
+          class="group flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300">
+          <div>
+            <div class="text-center">
+              <div
+                class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl mb-5 mx-auto group-hover:scale-105 transition-transform">
+                🌧️
+              </div>
+              <h3 class="font-semibold text-base text-slate-900 mb-4">
+                Prakiraan Hujan
+              </h3>
+            </div>
+
+            <div class="space-y-1.5 border-t border-slate-100 pt-4">
+              <a href="https://staklim-bali.bmkg.go.id/?page_id=1722" target="_blank"
+                class="flex items-center justify-between p-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-all group/item">
+                <span>Analisis Curah Hujan</span>
+                <span class="text-slate-400 group-hover/item:translate-x-1 transition-transform text-xs">→</span>
+              </a>
+              <a href="https://staklim-bali.bmkg.go.id/?page_id=1702" target="_blank"
+                class="flex items-center justify-between p-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-all group/item">
+                <span>Prediksi 3 Bulan ke Depan</span>
+                <span class="text-slate-400 group-hover/item:translate-x-1 transition-transform text-xs">→</span>
+              </a>
+              <a href="https://staklim-bali.bmkg.go.id/?page_id=1643" target="_blank"
+                class="flex items-center justify-between p-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-all group/item">
+                <span>Update Hari Tanpa Hujan</span>
+                <span class="text-slate-400 group-hover/item:translate-x-1 transition-transform text-xs">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="group flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300">
+          <div>
+            <div class="text-center">
+              <div
+                class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-5 mx-auto group-hover:scale-105 transition-transform">
+                💨
+              </div>
+              <h3 class="font-semibold text-base text-slate-900 mb-4 leading-snug">Prakiraan Iklim dan Peringatan Dini
+                Ekstrem</h3>
+            </div>
+
+            <div class="space-y-1.5 border-t border-slate-100 pt-4">
+              <a href="https://bbmkg3.bmkg.go.id/prakiraan-hujan-bulanan" target="_blank"
+                class="flex items-center justify-between p-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-amber-600 transition-all group/item">
+                <span>Prakiraan Hujan Bulanan</span>
+                <span class="text-slate-400 group-hover/item:translate-x-1 transition-transform text-xs">→</span>
+              </a>
+              <a href="https://bbmkg3.bmkg.go.id/prakiraan-musim" target="_blank"
+                class="flex items-center justify-between p-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-amber-600 transition-all group/item">
+                <span>Prakiraan Musim</span>
+                <span class="text-slate-400 group-hover/item:translate-x-1 transition-transform text-xs">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-between rounded-2xl border border-slate-200 bg-slate-50/50 p-6 opacity-75">
+          <div>
+            <div class="text-center">
+              <div
+                class="w-12 h-12 rounded-xl bg-slate-100 text-slate-400 flex items-center justify-center text-2xl mb-5 mx-auto">
+                🌡️
+              </div>
+              <h3 class="font-semibold text-base text-slate-400 mb-2">Kondisi Atmosfer</h3>
+              <p class="text-sm text-slate-400 mb-4">Informasi lain terkait dengan kondisi atmosfer di wilayah sekitar.
+              </p>
+            </div>
+
+            <div class="border-t border-slate-200/60 pt-4">
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-500">
+                Segera Hadir
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 text-center">
+      <button
+        onclick="document.getElementById('myModal-hidrometeorologi').classList.remove('hidden'); document.getElementById('myModal-hidrometeorologi').classList.add('flex')"
+        class="inline-flex items-center justify-center px-6 py-3.5 rounded bg-amber-500 hover:bg-amber-600 text-white font-medium text-sm shadow-sm hover:shadow-md transition-all duration-200 gap-2 focus:ring-4 focus:ring-amber-100 outline-none">
+        Permohonan Data Hidrometeorologi
+      </button>
+    </div>
+  </section>
+
+  <div id="myModal-hidrometeorologi"
+    class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 transition-opacity duration-300">
+
+    <div class="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden transform transition-all scale-100">
+
+      <div class="bg-blue-600 px-6 py-4 flex justify-between items-center text-white">
+        <h3 class="text-lg font-semibold">Formulir Pengajuan Permohonan Data Hidrometeorologi</h3>
+        <button
+          onclick="document.getElementById('myModal-hidrometeorologi').classList.add('hidden'); document.getElementById('myModal-hidrometeorologi').classList.remove('flex')"
+          class="text-white hover:text-gray-200 focus:outline-none text-xl font-bold">
+          ✕
+        </button>
+      </div>
+
+      <form id="downloadForm" enctype="multipart/form-data" class="p-6 space-y-4">
+
+        <div>
+          <label for="nama" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+          <input type="text" id="nama" name="fi-sender-fullName" required placeholder="Masukan nama lengkap Anda"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+        </div>
+
+        <div>
+          <label for="email_user" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <input type="email" id="email_user" name="fi-sender-email" required placeholder="Masukan email Anda"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+        </div>
+
+        <div>
+          <label for="instansi" class="block text-sm font-medium text-gray-700 mb-1">Instansi</label>
+          <input type="text" id="instansi" name="fi-sender-company" required placeholder="Masukan Instansi Anda"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+        </div>
+
+        <div>
+          <label for="jenis_data" class="block text-sm font-medium text-gray-700 mb-1">Jenis Data</label>
+          <input type="text" id="jenis_data" name="fi-sender-jenisData" required
+            placeholder="Masukan Jenis Data yang ingin diajukan"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+        </div>
+
+        <div>
+          <label for="tujuan" class="block text-sm font-medium text-gray-700 mb-1">Tujuan</label>
+          <textarea id="tujuan" name="fi-text-tujuan" rows="3" required
+            placeholder="Tuliskan tujuan Anda mengunduh data ini"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm resize-none"></textarea>
+        </div>
+
+        <div>
+          <label for="surat_permohonan" class="block text-sm font-medium text-gray-700 mb-1">Surat
+            Permohonan</label>
+          <input type="file" id="surat_permohonan" name="fi-file-suratPermohonan" required accept=".pdf"
+            class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 border border-gray-300 rounded-lg cursor-pointer focus:outline-none">
+          <p class="mt-1 text-xs text-gray-500">Format yang diterima hanya PDF dan ukuran file maksimal 500 KB.</p>
+        </div>
+
+        <div class="flex justify-end space-x-3 pt-4 border-t border-gray-100">
+          <button type="button"
+            onclick="document.getElementById('myModal-hidrometeorologi').classList.add('hidden'); document.getElementById('myModal-hidrometeorologi').classList.remove('flex')"
+            class="px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 focus:outline-none">
+            Batal
+          </button>
+          <button type="submit" id="btnSubmit"
+            class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none shadow-md">
+            Kirim
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <section id="page-hidrogeologi" class="page bg-slate-50/50 min-h-screen">
+    <header class="page-header">
+      <div class="page-header-inner">
+        <nav class="breadcrumb">
+          <a href="#">Beranda</a> <span style="margin:0 4px;">/</span>
+          <span style="font-weight:600;color:var(--ink);">Hidrogeologi</span>
+        </nav>
+        <div class="header-row">
+          <div>
+            <h1 class="header-title">Informasi Hidrogeologi</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+      <div class="grid md:grid-cols-3 gap-8 items-stretch">
+
+        <div
+          class="group flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300">
+          <div>
+            <div class="text-center">
+              <div
+                class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl mb-5 mx-auto group-hover:scale-105 transition-transform">
+                🌧️
+              </div>
+              <h3 class="font-semibold text-base text-slate-900 mb-4">
+                Potensi Air Tanah
+              </h3>
+            </div>
+
+            <div class="space-y-1.5 border-t border-slate-100 pt-4">
+              <a href="peta_hidrogeologi.html"
+                class="flex items-center justify-between p-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-all group/item">
+                <span>Peta Hidrogeologi</span>
+                <span class="text-slate-400 group-hover/item:translate-x-1 transition-transform text-xs">→</span>
+              </a>
+              <a href="peta_cat.html"
+                class="flex items-center justify-between p-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-all group/item">
+                <span>Peta CAT</span>
+                <span class="text-slate-400 group-hover/item:translate-x-1 transition-transform text-xs">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="group flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300 opacity-75">
+          <div>
+            <div class="text-center">
+              <div
+                class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-5 mx-auto group-hover:scale-105 transition-transform">
+                💨
+              </div>
+              <h3 class="font-semibold text-base text-slate-900 mb-4 leading-snug">Informasi Mengenai Kondisi Akuifer
+              </h3>
+            </div>
+
+            <div class="space-y-1.5 border-t border-slate-100 pt-4">
+              <div class="flex items-center justify-center p-2.5 rounded-lg text-sm font-medium text-slate-700">
+                <span>Segera Hadir</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-between rounded-2xl border border-slate-200 bg-slate-50/50 p-6 opacity-75">
+          <div>
+            <div class="text-center">
+              <div
+                class="w-12 h-12 rounded-xl bg-slate-100 text-slate-400 flex items-center justify-center text-2xl mb-5 mx-auto">
+                🌡️
+              </div>
+              <h3 class="font-semibold text-base text-slate-400 mb-2">Informasi Lain Terkait Air Tanah</h3>
+              </p>
+            </div>
+
+            <div class="space-y-1.5 border-t border-slate-100 pt-4">
+              <div class="flex items-center justify-center p-2.5 rounded-lg text-sm font-medium text-slate-700">
+                <span>Segera Hadir</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 text-center">
+      <button
+        onclick="document.getElementById('myModal-hidrometeorologi').classList.remove('hidden'); document.getElementById('myModal-hidrometeorologi').classList.add('flex')"
+        class="inline-flex items-center justify-center px-6 py-3.5 rounded bg-amber-500 hover:bg-amber-600 text-white font-medium text-sm shadow-sm hover:shadow-md transition-all duration-200 gap-2 focus:ring-4 focus:ring-amber-100 outline-none">
+        Permohonan Data Hidrogeologi
+      </button>
+    </div>
+  </section>
+
   <!-- Hidrogeologi -->
-  <section id="page-hidrogeologi" class="page">
+  <section id="page-" class="page">
     <div class="bg-gradient-to-b from-[var(--sand)] to-transparent border-b border-slate-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
         <nav class="text-xs text-slate-500"><a href="#" data-tab="home"
@@ -2118,46 +2648,11 @@
             <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-[var(--ink)] mt-2">Hidrogeologi
             </h1>
           </div>
-          <span
-            class="inline-flex items-center gap-2 bg-amber-100 text-amber-800 border border-amber-200 rounded-full px-3 py-1.5 text-xs font-semibold">
-            <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-            Dalam pengembangan
-          </span>
         </div>
       </div>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12 grid lg:grid-cols-12 gap-8">
       <div class="lg:col-span-8">
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 ring-soft">
-          <div class="flex items-center gap-3 text-amber-700 font-semibold text-sm">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 8v4l3 2" />
-            </svg>
-            Pemberitahuan
-          </div>
-          <h2 class="font-display text-xl sm:text-2xl md:text-3xl font-semibold text-[var(--ink)] mt-3 leading-snug">
-            Halaman ini sedang dalam tahap penyiapan dan pengembangan.
-          </h2>
-          <p class="text-slate-600 mt-4 leading-relaxed">
-            Mohon perhatian Anda bahwa laman yang berisi data dan/atau informasi <strong>Hidrogeologi</strong> ini
-            sedang dalam tahap penyiapan dan pengembangan.
-            Kami berkomitmen untuk menyediakan akses yang komprehensif dan akurat terhadap data Hidrogeologi di Wilayah
-            Sungai Bali Penida.
-            Kami bekerja keras untuk memastikan semua data dan/atau informasi yang disajikan relevan dan mudah diakses.
-          </p>
-          <p class="text-slate-600 mt-3 leading-relaxed">Terima kasih atas dukungan dan kontribusi Anda dalam
-            pengelolaan Sumber Daya Air di Wilayah Sungai Bali Penida.</p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#"
-              class="bg-[var(--ink)] text-white font-semibold text-sm px-4 py-2.5 rounded-full inline-flex items-center gap-2">
-              Lihat Data
-            </a>
-            <button data-tab="home"
-              class="tab-btn border border-slate-300 hover:bg-slate-50 font-semibold text-sm px-4 py-2.5 rounded-full">Kembali
-              ke Beranda</button>
-          </div>
-        </div>
         <div class="mt-6 grid sm:grid-cols-3 gap-4">
           <div class="rounded-2xl border border-dashed border-slate-300 bg-white/50 p-5 text-center">
             <div class="text-3xl">⛲</div>
@@ -2177,7 +2672,87 @@
         </div>
       </div>
     </div>
+
+    <div class="mt-12 text-center">
+      <button
+        onclick="document.getElementById('myModal-hidrogeologi').classList.remove('hidden'); document.getElementById('myModal-hidrogeologi').classList.add('flex')"
+        class="inline-flex items-center justify-center px-6 py-3.5 rounded bg-amber-500 hover:bg-amber-600 text-white font-medium text-sm shadow-sm hover:shadow-md transition-all duration-200 gap-2 focus:ring-4 focus:ring-amber-100 outline-none">
+        Permohonan Data Hidrogeologi
+      </button>
+    </div>
   </section>
+
+  <div id="myModal-hidrogeologi"
+    class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 transition-opacity duration-300">
+
+    <div class="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden transform transition-all scale-100">
+
+      <div class="bg-blue-600 px-6 py-4 flex justify-between items-center text-white">
+        <h3 class="text-lg font-semibold">Formulir Pengajuan Permohonan Data Hidrogeologi</h3>
+        <button
+          onclick="document.getElementById('myModal-hidrogeologi').classList.add('hidden'); document.getElementById('myModal-hidrogeologi').classList.remove('flex')"
+          class="text-white hover:text-gray-200 focus:outline-none text-xl font-bold">
+          ✕
+        </button>
+      </div>
+
+      <form id="downloadForm" enctype="multipart/form-data" class="p-6 space-y-4">
+
+        <div>
+          <label for="nama" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+          <input type="text" id="nama" name="fi-sender-fullName" required placeholder="Masukan nama lengkap Anda"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+        </div>
+
+        <div>
+          <label for="email_user" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <input type="email" id="email_user" name="fi-sender-email" required placeholder="Masukan email Anda"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+        </div>
+
+        <div>
+          <label for="instansi" class="block text-sm font-medium text-gray-700 mb-1">Instansi</label>
+          <input type="text" id="instansi" name="fi-sender-company" required placeholder="Masukan Instansi Anda"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+        </div>
+
+        <div>
+          <label for="jenis_data" class="block text-sm font-medium text-gray-700 mb-1">Jenis Data</label>
+          <input type="text" id="jenis_data" name="fi-sender-jenisData" required
+            placeholder="Masukan Jenis Data yang ingin diajukan"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+        </div>
+
+        <div>
+          <label for="tujuan" class="block text-sm font-medium text-gray-700 mb-1">Tujuan</label>
+          <textarea id="tujuan" name="fi-text-tujuan" rows="3" required
+            placeholder="Tuliskan tujuan Anda mengunduh data ini"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm resize-none"></textarea>
+        </div>
+
+        <div>
+          <label for="surat_permohonan" class="block text-sm font-medium text-gray-700 mb-1">Surat
+            Permohonan</label>
+          <input type="file" id="surat_permohonan" name="fi-file-suratPermohonan" required accept=".pdf"
+            class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 border border-gray-300 rounded-lg cursor-pointer focus:outline-none">
+          <p class="mt-1 text-xs text-gray-500">Format yang diterima hanya PDF dan ukuran file maksimal 500 KB.</p>
+        </div>
+
+        <div class="flex justify-end space-x-3 pt-4 border-t border-gray-100">
+          <button type="button"
+            onclick="document.getElementById('myModal-hidrogeologi').classList.add('hidden'); document.getElementById('myModal-hidrogeologi').classList.remove('flex')"
+            class="px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 focus:outline-none">
+            Batal
+          </button>
+          <button type="submit" id="btnSubmit"
+            class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none shadow-md">
+            Kirim
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
 
   <section id="page-dokumen" class="page">
     <div class="bg-gradient-to-b from-[var(--mist)] to-transparent border-b border-slate-200">
@@ -2329,28 +2904,244 @@
   </section>
 
   <section id="page-kontak" class="page">
-    <div class="bg-gradient-to-b from-[var(--mist)] to-transparent border-b border-slate-200">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
-        <nav class="text-xs text-slate-500">
-          <a href="#" data-tab="home" class="tab-btn hover:text-[var(--sea)]">Beranda</a>
-          <span class="mx-1">/</span>
-          <span class="text-[var(--ink)] font-medium">Kontak</span>
-        </nav>
-        <div class="mt-5">
-          <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-[var(--ink)] mt-2">Hubungi Kami
-          </h1>
-          <p class="text-slate-600 mt-2 max-w-2xl">Informasi lengkap alamat kantor, lokasi peta, dan kontak resmi <br
-              class="mobile-br">Balai Wilayah Sungai Bali Penida.</p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12 space-y-12">
+      <div class="space-y-6">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold text-[var(--ink)]">
+            Instansi Terkait
+          </h2>
+          <p class="text-sm text-slate-500">
+            Daftar instansi yang terhubung dengan web portal kami.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm flex flex-col justify-between text-xs text-slate-600">
+            <div class="space-y-3">
+              <div>
+                <div class="font-bold text-sm text-[var(--ink)]">Stasiun Klimatologi Kelas II Bali (BMKG)
+                </div>
+              </div>
+              <p class="line-clamp-3">Jalan Leli No.9 Baler Bale Agung, Kec. Negara, Kab. Jembrana, Provinsi Bali</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-[11px]">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-[var(--sea)] font-medium">Email:</span>
+                <span class="truncate">staklim.bali@bmkg.go.id</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[var(--sea)] font-medium">IG:</span>
+                <span class="truncate">@staklim.bali.bmkg</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm flex flex-col justify-between text-xs text-slate-600">
+            <div class="space-y-3">
+              <div>
+                <div class="font-bold text-sm text-[var(--ink)]">Bappeda Provinsi Bali</div>
+              </div>
+              <p class="line-clamp-3">Jalan Cok Agung Tresna, Renon-Denpasar</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-[11px]">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-[var(--sea)] font-medium">Email:</span>
+                <span class="truncate">bappeda@baliprov.go.id</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[var(--sea)] font-medium">IG:</span>
+                <span class="truncate">@bappedabali</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm flex flex-col justify-between text-xs text-slate-600">
+            <div class="space-y-3">
+              <div>
+                <div class="font-bold text-sm text-[var(--ink)]">Balai Pengelolaan DAS Unda Anyar, UPT
+                  Kementerian Kehutanan</div>
+              </div>
+              <p class="line-clamp-3">Jalan By Pass Ngurah Rai, Km 23,5, Tuban, Kuta, Badung, Bali. 80361</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-[11px]">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-[var(--sea)] font-medium">Email:</span>
+                <span class="truncate">bpdas_undaanyar@yahoo.co.id</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[var(--sea)] font-medium">IG:</span>
+                <span class="truncate">@undaanyar</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm flex flex-col justify-between text-xs text-slate-600">
+            <div class="space-y-3">
+              <div>
+                <div class="font-bold text-sm text-[var(--ink)]">Dinas Pertanian dan Ketahanan Pangan
+                  Provinsi Bali</div>
+              </div>
+              <p class="line-clamp-3">Jl. WR Supratman No.71, Sumerta Kaja, Kec. Denpasar Tim., Kota Denpasar, Bali
+                80236</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-[11px]">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-[var(--sea)] font-medium">Email:</span>
+                <span class="truncate">distanpangan@baliprov.go.id</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[var(--sea)] font-medium">IG:</span>
+                <span class="truncate">@distanpanganbali</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm flex flex-col justify-between text-xs text-slate-600">
+            <div class="space-y-3">
+              <div>
+                <div class="font-bold text-sm text-[var(--ink)]">Dinas Pekerjaan Umum, Penataan Ruang,
+                  Perumahan dan Kawasan Permukiman Provinsi Bali</div>
+              </div>
+              <p class="line-clamp-3">Jalan Beliton Nomor 2 Denpasar</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-[11px]">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-[var(--sea)] font-medium">Email:</span>
+                <span class="truncate">dispuprkim.baliprov.go.id</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[var(--sea)] font-medium">IG:</span>
+                <span class="truncate">@dis_puprkimbali</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm flex flex-col justify-between text-xs text-slate-600">
+            <div class="space-y-3">
+              <div>
+                <div class="font-bold text-sm text-[var(--ink)]">Dinas Kehutanan dan Lingkungan Hidup
+                  Provinsi Bali</div>
+              </div>
+              <p class="line-clamp-3">Jl. D.I Panjaitan no 1, DPS</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-[11px]">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-[var(--sea)] font-medium">Email:</span>
+                <span class="truncate">infodklh@baliprov.go.id</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[var(--sea)] font-medium">IG:</span>
+                <span class="truncate">@dklhprovbali</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm flex flex-col justify-between text-xs text-slate-600">
+            <div class="space-y-3">
+              <div>
+                <div class="font-bold text-sm text-[var(--ink)]">Dinas Pekerjaan Umum dan Penataan Ruang Kabupaten
+                  Badung</div>
+              </div>
+              <p class="line-clamp-3">Jalan Raya Sempidi,Mangupura,Sempidi Kecamatan Mengwi Kab. Badung</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-[11px]">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-[var(--sea)] font-medium">Email:</span>
+                <span class="truncate">puprbadung@gmail.com</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[var(--sea)] font-medium">IG:</span>
+                <span class="truncate">@dpuprbadung</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm flex flex-col justify-between text-xs text-slate-600">
+            <div class="space-y-3">
+              <div>
+                <div class="font-bold text-sm text-[var(--ink)]">Dinas Pekerjaan Umum dan Penataan Ruang
+                  Kota Denpasar</div>
+              </div>
+              <p class="line-clamp-3">Jalan Gatot Subroto VI/J No. 24 Denpasar</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-[11px]">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-[var(--sea)] font-medium">Email:</span>
+                <span class="truncate">Pu.denpasarkota@gmail.com</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[var(--sea)] font-medium">IG:</span>
+                <span class="truncate">@dpupr.denpasarkota</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm flex flex-col justify-between text-xs text-slate-600">
+            <div class="space-y-3">
+              <div>
+                <div class="font-bold text-sm text-[var(--ink)]">Dinas Pekerjaan Umum dan Penataan Ruang Kabupaten
+                  Gianyar</div>
+              </div>
+              <p class="line-clamp-3">Puspem Gianyar, Gedung A Lantai 1 (Sayap Timur), Jln Kebo Iwa Gianyar</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-[11px]">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-[var(--sea)] font-medium">Email:</span>
+                <span class="truncate">dinaspugianyar@gmail.com</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[var(--sea)] font-medium">IG:</span>
+                <span class="truncate">@dpupr_gianyar</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm flex flex-col justify-between text-xs text-slate-600">
+            <div class="space-y-3">
+              <div>
+                <div class="font-bold text-sm text-[var(--ink)]">Dinas Pekerjaan Umum dan Penataan Ruang, Perumahan Rakyat dan Kawasan Permukiman Kabupaten Karangasem</div>
+              </div>
+              <p class="line-clamp-3">Jalan Nenas, Kecicang, Amlapura, 80861.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-[11px]">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-[var(--sea)] font-medium">Email:</span>
+                <span class="truncate">pu.karangasem@gmail.com</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[var(--sea)] font-medium">IG:</span>
+                <span class="truncate">@dpuprkim_karangasem</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
+      <hr class="border-slate-100">
+
+      <div class="text-center">
+        <h2 class="text-3xl font-bold text-[var(--ink)]">
+          Kontak Pengelola Portal
+        </h2>
+        <p class="text-sm text-slate-500">
+          Informasi lengkap kami bisa di hubungi melalui kontak di bawah ini.
+        </p>
+      </div>
+
       <div class="grid lg:grid-cols-12 gap-8 items-start">
-
         <div class="lg:col-span-5 space-y-6">
           <div class="rounded-xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm ring-soft">
-
             <div class="space-y-4 text-sm text-slate-600">
               <div class="flex gap-3 items-start">
                 <div class="mt-1 text-[var(--sea)] shrink-0">
@@ -2390,9 +3181,10 @@
                 <div>
                   <div class="font-semibold text-[var(--ink)]">Instagram</div>
                   <a href="https://www.instagram.com/pu_sda_balipenida?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                    class="mt-1">@pu_sda_balipenida</a>
+                    class="mt-1 text-blue-600 hover:underline">@pu_sda_balipenida</a>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -2402,8 +3194,7 @@
             <iframe
               src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Balai%20Wilayah%20Sungai%20Bali-Penida%2C%20JL%20Kapten%20Tjok%20Agung%20Tresna%2C%20Panjer%2C%20Denpasar%20City%2C%20Bali%2C%20Indonesia&maptype=roadmap"
               width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade" class="rounded-xl">
-            </iframe>
+              referrerpolicy="no-referrer-when-downgrade" class="rounded-xl"></iframe>
           </div>
         </div>
 
@@ -2421,8 +3212,8 @@
             <div class="text-xs text-white/60">Balai Wilayah Sungai Bali Penida</div>
           </div>
         </div>
-        <p class="text-sm mt-4 max-w-md">Sistem Informasi Hidrologi, Hidrometeorologi, dan Hidrogeologi
-        <div>Jl. Kapten Tjok Agung Tresna No.9, Panjer, Denpasar Selatan, 80234</div>
+        <p class="text-sm mt-4 max-w-md">
+        <div>Jl. Kapten Tjok Agung Tresna No.9, Panjer, Denpasar Selatan, Bali 80234</div>
         </p>
       </div>
       <div class="md:col-span-3">
@@ -2435,7 +3226,23 @@
       </div>
       <div class="md:col-span-4">
         <div class="text-white font-semibold mb-3 text-sm">Kontak</div>
-        <p class="text-sm">tkpsda.wsbalipenida@gmail.com</p>
+        <p class="text-sm flex items-center gap-2 text-slate-300">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-4 h-4 shrink-0">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+          </svg>
+          <span>tkpsda.wsbalipenida@gmail.com</span>
+        </p>
+        <p class="text-sm mt-2 flex items-center gap-2 text-slate-300">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-4 h-4 shrink-0">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-linecap="round" stroke-linejoin="round" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.5 6.5h.008v.008h-.008V6.5Z" />
+          </svg>
+          <span>@pu_sda_balipenida</span>
+        </p>
       </div>
     </div>
     <div class="border-t border-white/10">
@@ -2447,7 +3254,7 @@
 
   <script>
     // Tab navigation
-    const pages = ['home', 'hidrologi', 'hidrometeorologi', 'hidrogeologi', 'kontak', 'dokumen'];
+    const pages = ['home', 'hidrologi', 'hidrometeorologi', 'hidrogeologi', 'kontak', 'dokumen', 'kegiatan'];
     function setTab(name) {
       pages.forEach(p => {
         const el = document.getElementById('page-' + p);
@@ -2491,7 +3298,7 @@
       { n: 'Dinas Kehutanan dan Lingkungan Hidup Provinsi Bali', img: 'gambar/bali.png', url: 'https://dklh.baliprov.go.id/' },
       { n: 'Dinas Pertanian dan Ketahanan Pangan Provinsi Bali', img: 'gambar/bali.png', url: 'https://distanpangan.baliprov.go.id/' },
       { n: 'Dinas Komunikasi, Informatika, dan Statistik Provinsi Bali', img: 'gambar/bali.png', url: 'https://diskominfos.baliprov.go.id/' },
-      { n: 'Pusat Pengendalian Lingkungan Hidup Bali dan Nusra', img: 'gambar/pusdallhbali.png', url: 'https://pusdallhbalinusra.kemenlh.go.id/?v=fix' }
+      { n: 'Pusat Pengendalian Lingkungan Hidup Bali dan Nusra', img: 'gambar/pusdallhbali.webp', url: 'https://pusdallhbalinusra.kemenlh.go.id/?v=fix' }
     ];
 
     // Full page
